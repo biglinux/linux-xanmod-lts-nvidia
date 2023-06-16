@@ -3,12 +3,12 @@
 # Archlinux maintainer : Thomas Baechler <thomas@archlinux.org>
 
 _linuxprefix=linux-xanmod-lts
-_extramodules=$(find /usr/lib/modules -type d -iname 6.1.33*xanmod* | rev | cut -d "/" -f1 | rev)
+_extramodules=$(find /usr/lib/modules -type d -iname 6.1.34*xanmod* | rev | cut -d "/" -f1 | rev)
 
 pkgname=$_linuxprefix-nvidia
 pkgdesc="NVIDIA drivers for linux"
-pkgver=530.41.03
-pkgrel=61331
+pkgver=535.54.03
+pkgrel=61341
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -20,7 +20,7 @@ options=(!strip)
 install=nvidia.install
 _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
 source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha256sums=('01a129b657481c4a80930803668a3c7cb5f94a7aa218f5509d783080eb9fbf14')
+sha256sums=('f42009e644ffdf64245424b438070e1a3f50f0ef55be1af5d57d644e9f156ef8')
 
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
@@ -32,7 +32,7 @@ prepare() {
 }
 
 build() {
-    _kernver=$(find /usr/lib/modules -type d -iname 6.1.33*xanmod* | rev | cut -d "/" -f1 | rev)
+    _kernver=$(find /usr/lib/modules -type d -iname 6.1.34*xanmod* | rev | cut -d "/" -f1 | rev)
 
     cd "${_pkg}"
     make -C kernel SYSSRC=/usr/lib/modules/"${_kernver}/build" module
