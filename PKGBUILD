@@ -3,7 +3,7 @@
 # Archlinux maintainer : Thomas Baechler <thomas@archlinux.org>
 
 _linuxprefix=linux-xanmod-lts
-_kernver="$(cat /usr/src/${_linuxprefix}//build/version)"
+_kernver=$(find /usr/lib/modules -type d -iname 6.1.76*xanmod* | rev | cut -d "/" -f1 | rev)
 
 pkgname=$_linuxprefix-nvidia
 pkgdesc="NVIDIA drivers for linux"
