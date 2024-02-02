@@ -32,6 +32,7 @@ prepare() {
 }
 
 build() {
+    _kernver=$(cat /usr/src/${_linuxprefix}/version)
     echo "AKI"
     echo "AKI"
     echo "AKI"
