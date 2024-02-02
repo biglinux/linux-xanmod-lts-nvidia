@@ -32,6 +32,20 @@ prepare() {
 }
 
 build() {
+    echo "AKI"
+    echo "AKI"
+    echo "AKI"
+    echo "${_kernver}"
+    echo "AKI"
+    echo "AKI"
+    echo "AKI"
+    echo "@@@"
+    echo "@@@"
+    echo "@@@"
+    ls -lha /usr/src/
+    echo "@@@"
+    echo "@@@"
+    echo "@@@"
 
     cd "${_pkg}"
     make -C kernel SYSSRC=/usr/lib/modules/"${_kernver}/build" module
