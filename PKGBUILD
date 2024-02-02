@@ -3,7 +3,7 @@
 # Archlinux maintainer : Thomas Baechler <thomas@archlinux.org>
 
 _linuxprefix=linux-xanmod-lts
-_kernver=$(ls /usr/lib/modules/ | grep xanmod)
+_kernver=$(cat /usr/src/${_linuxprefix}/version)
 
 pkgname=$_linuxprefix-nvidia
 pkgdesc="NVIDIA drivers for linux"
@@ -36,18 +36,9 @@ build() {
     echo "AKI"
     echo "AKI"
     echo "${_kernver}"
-    ls /usr/lib/modules/ | grep xanmod
     echo "AKI"
     echo "AKI"
     echo "AKI"
-    echo "@@@"
-    echo "@@@"
-    echo "@@@"
-    cd /
-    ls -lha /usr/src/
-    echo "@@@"
-    echo "@@@"
-    echo "@@@"
 
     cd "${_pkg}"
     make -C kernel SYSSRC=/usr/lib/modules/"${_kernver}/build" module
