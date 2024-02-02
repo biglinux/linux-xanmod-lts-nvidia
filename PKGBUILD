@@ -36,12 +36,14 @@ build() {
     echo "AKI"
     echo "AKI"
     echo "${_kernver}"
+    find /usr/lib/modules -type d 
     echo "AKI"
     echo "AKI"
     echo "AKI"
     echo "@@@"
     echo "@@@"
     echo "@@@"
+    cd /
     ls -lha /usr/src/
     echo "@@@"
     echo "@@@"
