@@ -6,7 +6,7 @@ _linuxprefix=linux-xanmod-lts
 
 pkgname="${_linuxprefix}-nvidia"
 pkgdesc="NVIDIA drivers for linux"
-pkgver=550.78
+pkgver=550.90.07
 pkgrel=66321
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -17,8 +17,12 @@ makedepends=("${_linuxprefix}-headers")
 provides=("nvidia=${pkgver}" 'NVIDIA-MODULE')
 options=(!strip)
 _durl="https://us.download.nvidia.com/XFree86/Linux-x86"
-source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha256sums=('3822a03d21607da36dd799199667da6380e2ec15ef80d1150c7c72a8d1f84eb9')
+source=("${_durl}_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run"
+        '0001-NVIDIA-take-modeset-ownership-early.patch'
+        'make-modeset-fbdev-default.patch')
+sha256sums=('5a92545013649d6435d46fc8b5af617f4e3fdea78ee435e034c14bc47557c117'
+            '5dde67ef74cc5ca6e96e9984886d58d17087794e81209f7154e450d670195250'
+            'd14d6c182446a090a043ae8547f98df2dc8660d3a1bcd98654406ad99ae0ad6c')
 
 _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
@@ -26,6 +30,10 @@ prepare() {
     sh "${_pkg}.run" --extract-only
 
     cd "${_pkg}"
+    patch -Np1 -i "$srcdir"/0001-NVIDIA-take-modeset-ownership-early.patch
+
+    cd kernel
+    patch -Np1 -i "$srcdir"/make-modeset-fbdev-default.patch
 }
 
 build() {
