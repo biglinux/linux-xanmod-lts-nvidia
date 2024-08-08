@@ -6,7 +6,7 @@ _linuxprefix=linux-xanmod-lts
 
 pkgname="${_linuxprefix}-nvidia"
 pkgdesc="NVIDIA drivers for linux"
-pkgver=550.100
+pkgver=550.107.02
 pkgrel=66441
 arch=('x86_64')
 url="http://www.nvidia.com/"
